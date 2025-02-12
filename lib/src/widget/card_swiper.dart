@@ -8,6 +8,7 @@ import 'package:flutter_card_swiper/src/card_animation.dart';
 import 'package:flutter_card_swiper/src/controller/controller_event.dart';
 import 'package:flutter_card_swiper/src/utils/number_extension.dart';
 import 'package:flutter_card_swiper/src/utils/undoable.dart';
+import 'package:flutter_card_swiper/src/widget/priority_swipe_detector.dart';
 
 part 'card_swiper_state.dart';
 

@@ -99,7 +99,7 @@ class _CardSwiperState<T extends Widget> extends State<CardSwiper>
     return Positioned(
       left: _cardAnimation.left,
       top: _cardAnimation.top,
-      child: GestureDetector(
+      child: PriorityCardSwipeDetector(
         child: Transform.rotate(
           angle: _cardAnimation.angle,
           child: ConstrainedBox(
@@ -112,7 +112,7 @@ class _CardSwiperState<T extends Widget> extends State<CardSwiper>
             ),
           ),
         ),
-        onTap: () async {
+        onTap: (_) async {
           if (widget.isDisabled) {
             await widget.onTapDisabled?.call();
           }

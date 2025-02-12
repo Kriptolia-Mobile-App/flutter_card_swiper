@@ -13,6 +13,25 @@ It allows you to swipe left, right, up, and down and define your own business lo
 
 Very smooth animations supporting Android, iOS, Web & Desktop.
 
+## Changes to the Original Package
+
+We had a problem where there was a `PageView` (actually `TabView`) on the top of the widget tree. The issue is that `PageView` wins the horizontal drag gesture most of the time. Still, it wouldn't matter since experimenting shows the gesture detector child wins even the horizontal drag gesture in normal circumstances, but this package uses the gesture detector inside `Stack`. For some reason, the use of `Stack` makes gesture detector "less important" from the perspective of `GestureArena`. 
+
+The solution was to declare a new custom gesture detector, `PriorityCardSwipeDetector`, which will always win the `GestureArena`. While this may not be the best solution in most of the use cases, it fits our use cases. 
+
+
+Only downside currently is `onTap` is not set correctly, it detects all `tapUp` gestures as `tap`.
+
+
+Check following sources on gesture recognition:
+
+- https://www.youtube.com/watch?v=Q85LBtBdi0U
+- https://docs.flutter.dev/ui/interactivity/gestures
+- https://stackoverflow.com/questions/52965799/flutter-gesturedetector-not-working-with-containers-in-stack
+
+
+
+
 ## Why?
 
 We built this package because we wanted to:
